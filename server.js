@@ -5,6 +5,7 @@
 /* ***********************
  * Require Statements
  *************************/
+const expressLayouts = require("express-ejs-layouts")
 const express = require("express")
 const env = require("dotenv").config()
 const app = express()
