@@ -95,7 +95,7 @@ body {
 .hero-info {
   background: var(--light-blue); /* fallback */
   background: rgba(240, 249, 255, 0.85); /* transparent card */
-  backdrop-filter: blur(5px); /* frosted effect */
+  /* backdrop-filter: blur(5px); frosted effect */
   padding: 1rem;
   border-radius: 6px;
   box-shadow: 0 4px 8px var(--shadow);
