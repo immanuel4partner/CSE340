@@ -1,2 +1,13 @@
+<% if (title) { %>
+<section class="page-title-card">
+    <h1>
+        <%= title %>
+    </h1>
+</section>
+<% } else { %>
+<% res.redirect("/") %>
+<% } %>
 
-<%- grid%>
+<%# messages() %>
+
+<%- grid %>

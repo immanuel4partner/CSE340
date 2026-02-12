@@ -1,35 +1,44 @@
+// controllers/invController.js
 const invModel = require("../models/inventory-model")
 const utilities = require("../utilities/")
 
-const invCont = {}
+const invController = {}
 
-/* ***************************
- *  Build inventory by classification view
- * ************************** */
-invCont.buildByClassificationId = async function (req, res, next) {
-  const classification_id = req.params.classificationId
-  const data = await invModel.getInventoryByClassificationId(classification_id)
-  const grid = await utilities.buildClassificationGrid(data)
-  let nav = await utilities.getNav()
-  const className = data[0].classification_name
-  res.render("./inventory/classification", {
-    title: className + " vehicles",
+invController.buildByClassificationId = async function (req, res, next) {
+  const classificationId = req.params.classificationId
+  const nav = await utilities.getNav()
+
+  // get inventory rows for that classification
+  const data = await invModel.getInventoryByClassificationId(classificationId)
+
+  // build the HTML grid
+  const grid = await utilities.buildClassificationGrid(data.rows)
+  
+  // classification name for title
+  const className = data.rows[0]?.classification_name || "Vehicles"
+
+  res.render("inventory/classification", {
+    title: className,
     nav,
     grid,
   })
 }
 
-invCont.getDetails = async function (req, res, next) {
-  const inv_id = req.params.invId
-    const data = await invModel.getVehicleById(inv_id)
-    const grids = await utilities.vehicleDetails(data)
-    let nav = await utilities.getNav();
-    const className = data[0].inv_make
-    res.render("./inventory/details", {
-        title: className + " vehicles",
-        nav,
-        grids,
-    })
-};
+invController.buildByInventoryId = async function (req, res, next) {
+  const invId = req.params.invId
+  const nav = await utilities.getNav()
+  const vehicle = await invModel.getInventoryById(invId)
 
-module.exports = invCont
+  if (!vehicle) return next({ status: 404, message: "Vehicle not found." })
+
+  const title = `${vehicle.inv_make} ${vehicle.inv_model}`
+  const detailHtml = utilities.buildVehicleDetail(vehicle)
+
+  res.render("inventory/detail", {
+    title,
+    nav,
+    vehicle,
+  })
+}
+module.exports = invController
+
