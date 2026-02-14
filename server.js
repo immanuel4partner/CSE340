@@ -11,6 +11,8 @@ const baseController = require("./controllers/baseController")
 const utilities = require("./utilities")
 const invRoute = require("./routes/inventoryRoute")
 const errorRoute = require("./routes/errorRoute")
+const session = require("express-session")
+const pool = require('./database/')
 
 /* ***********************
  * View Engine and Templates
@@ -23,6 +25,16 @@ app.set("layout", "./layouts/layout")
  * Middleware 
  *************************/
 app.use(express.static("public"))
+app.use(session({
+  store: new (require('connect-pg-simple')(session))({
+    createTableIfMissing: true,
+    pool,
+  }),
+  secret: process.env.SESSION_SECRET,
+  resave: true,
+  saveUninitialized: true,
+  name: 'sessionId',
+}))
 
 // Build nav for every view
 app.use(async (req, res, next) => {
@@ -76,5 +88,5 @@ app.use(async (err, req, res, next) => {
  *************************/
 const port = process.env.PORT || 5500;
 app.listen(port, "0.0.0.0", () => {
-    console.log(`App listening on port ${port}`);
+    console.log(`App listening onu port ${port}`);
 });
