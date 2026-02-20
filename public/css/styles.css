@@ -16,7 +16,11 @@
   --black: #1a1a1a;
   --gray-light: #ccc;
   --shadow: rgba(0, 0, 0, 0.15);
-} 
+  --navy: #0c3c55;
+  /* added for consistency with .management-btn etc. */
+  --champagne: #f7e7ce;
+  /* added because used in borders */
+}
 
 /* ===== BODY ===== */
 body {
@@ -56,10 +60,322 @@ body {
   text-decoration: underline;
 }
 
-#tools a {
-  text-decoration: none;
-  color: var(--dark-blue);
+/* Flash message banners */
+
+.flash {
+  max-width: 900px;
+  margin: 1rem auto;
+  padding: 0.9rem 1.1rem;
+  border-radius: 8px;
+  border: 1px solid transparent;
   font-weight: 600;
+}
+
+.flash--success {
+  background: #e9f7ee;
+  border-color: #2a7a44;
+  color: #1f5a33;
+}
+
+.flash--error {
+  background: #fdecec;
+  border-color: #b42318;
+  color: #7a1b14;
+}
+
+.flash--info {
+  background: #eef6ff;
+  border-color: #1d4ed8;
+  color: #1e3a8a;
+}
+.account-form {
+  max-width: 520px;
+  background: #fff;
+  border: 2px solid #111;
+  padding: 2rem;
+  margin: 2rem auto 1rem;
+  box-sizing: border-box;
+}
+h1 {
+  margin: 0 0 0.5rem;
+}
+
+.form-note {
+  margin: 0 0 0.75rem;
+  font-size: 0.95rem;
+}
+
+.required {
+  color: #b00020;
+  font-weight: 700;
+}
+
+.account-form label {
+  display: block;
+  margin: 1rem 0 0.35rem;
+  font-weight: 600;
+}
+
+.account-form input {
+  width: 100%;
+  padding: 0.85rem 0.9rem;
+  border: 2px solid #111;
+  border-radius: 2px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.account-alt {
+  text-align: center;
+  margin-top: 0.75rem;
+}
+
+.account-form input[type="email"],
+.account-form input[type="password"] {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+body.register {
+  background: #e6e6e6;
+}
+
+body.register .account-form {
+  background: #1f93b5;
+  /* teal blue card */
+  border-radius: 8px;
+  border: none;
+  color: #000;
+  width: 420px;
+  padding: 1.5rem;
+}
+
+body.register .form-note {
+  font-style: italic;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+body.register .account-form label {
+  font-weight: 700;
+}
+
+body.register .account-form input {
+  border: 1px solid #999;
+  border-radius: 2px;
+  padding: 0.4rem;
+}
+.password-inline {
+  margin-top: 0.75rem;
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+body.register main {
+  display: grid;
+  place-items: start center;
+  padding-top: 2rem;
+}
+
+.password-field {
+  display: flex;
+  gap: 0.5rem;
+  align-items: stretch;
+}
+
+.password-field input {
+  flex: 1;
+}
+
+.toggle-password {
+  width: 3rem;
+  border: 2px solid #111;
+  background: #f5f5f5;
+  cursor: pointer;
+  border-radius: 2px;
+  font-size: 1.1rem;
+}
+
+.password-help {
+  margin-top: 0.75rem;
+  padding: 0.75rem;
+  border-left: 4px solid #2d6cdf;
+  background: #f6f9ff;
+}
+
+.password-title {
+  margin: 0 0 0.25rem;
+  font-weight: 700;
+}
+
+.password-rules {
+  margin: 0 0 0.5rem 1.2rem;
+}
+
+.password-disclaimer {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+.primary-btn {
+  margin-top: 1rem;
+  background: #ddd;
+  color: #000;
+  border: 1px solid #333;
+  padding: 0.4rem 0.8rem;
+  border-radius: 3px;
+  font-size: 1rem;
+}
+ul.notice {
+  color: #c00;
+  font-style: italic;
+  font-weight: 600;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0 0 1rem 0;
+}
+
+.primary-btn:hover {
+  filter: brightness(0.95);
+}
+
+.account-alt {
+  margin-top: 0.75rem;
+}
+
+/* ===============================
+   Classification Page Styling
+================================= */
+
+.inventory-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.inventory-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-transform: capitalize;
+}
+
+#inv-display {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+}
+
+#inv-display li {
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+#inv-display li:hover {
+  transform: translateY(-5px);
+}
+
+#inv-display img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.namePrice {
+  padding: 1rem;
+  text-align: center;
+}
+
+.namePrice h2 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.namePrice span {
+  font-weight: bold;
+  color: #0a4d68;
+  font-size: 1.1rem;
+}
+
+body {
+  background: #e6e6e6;
+}
+
+.classification-form {
+  width: 420px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: #1f93b5;
+  border-radius: 8px;
+  border: none;
+  color: #000;
+}
+
+.classification-form .form-note {
+  font-style: italic;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.classification-form label {
+  font-weight: 700;
+}
+
+.classification-rule {
+  font-style: italic;
+  margin: 0.5rem 0;
+}
+
+.classification-form input {
+  width: 100%;
+  padding: 0.4rem;
+  border: 1px solid #999;
+  border-radius: 2px;
+  margin-bottom: 1rem;
+}
+
+.classification-btn {
+  background: #ddd;
+  color: #000;
+  border: 1px solid #333;
+  padding: 0.4rem 0.8rem;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.classification-btn:hover {
+  background: #ccc;
+}
+
+/* ==================================
+   FEATURE LAYOUT INSIDE GRID
+================================== */
+
+
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+nav a {
+  padding: 0.5rem 1rem;
+}
+/* Error styling like screenshot */
+ul.notice {
+  color: #c00;
+  font-style: italic;
+  font-weight: 600;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0 0 1rem 0;
 }
 
 /* ===== NAVIGATION ===== */
@@ -79,6 +395,178 @@ body {
 .main-nav a {
   color: var(--white);
   text-decoration: none;
+  font-weight: 600;
+}
+
+/* ===== INVENTORY MANAGEMENT ===== */
+.management-card {
+  max-width: 1100px;
+  margin: 1.5rem auto;
+  padding: 1.5rem;
+  background: var(--white);
+  border: 3px solid var(--champagne);
+  border-radius: 10px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+}
+
+.management-row {
+  margin-top: 1.5rem;
+}
+
+.management-lead {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.management-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.management-btn {
+  display: inline-block;
+  padding: 0.65rem 1.25rem;
+  background: var(--navy);
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 700;
+  border: 2px solid var(--navy);
+}
+
+.management-btn:hover,
+.management-btn:focus-visible {
+  filter: brightness(1.08);
+}
+
+/* ===== CLASSIFICATION SELECT ===== */
+#classificationList {
+  width: 100%;
+  max-width: 420px;
+  padding: 0.65rem;
+  margin: 0.75rem 0 1.25rem;
+  border-radius: 6px;
+  border: 2px solid var(--navy);
+  font-size: 1rem;
+  background: #fff;
+}
+
+/* ===== INVENTORY TABLE ===== */
+#inventoryDisplay {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  background: #fff;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+#inventoryDisplay th,
+#inventoryDisplay td {
+  padding: 0.6rem 0.75rem;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+#inventoryDisplay thead {
+  background: var(--navy);
+  color: white;
+}
+
+#inventoryDisplay tbody tr:nth-child(even) {
+  background: #f5f7fa;
+}
+
+/* ===== ADD CLASSIFICATION FORM ===== */
+/* ===== ADD INVENTORY (MATCH SCREENSHOT) ===== */
+
+.inventory-form {
+  width: 420px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: #1f93b5;
+  /* teal */
+  border-radius: 8px;
+  border: none;
+  color: #000;
+}
+
+.inventory-form .form-note {
+  font-style: italic;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.inventory-form label {
+  display: block;
+  margin-top: 0.9rem;
+  font-weight: 700;
+}
+
+.inventory-form input,
+.inventory-form select,
+.inventory-form textarea {
+  width: 100%;
+  padding: 0.4rem;
+  margin-top: 0.25rem;
+  border: 1px solid #999;
+  border-radius: 2px;
+  font-size: 0.95rem;
+}
+
+.inventory-form textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+.inventory-form button {
+  margin-top: 1rem;
+  background: #ddd;
+  border: 1px solid #333;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+}
+
+.inventory-form button:hover {
+  background: #ccc;
+}
+
+/* White inner border box */
+.inventory-inner {
+  border: 1px solid #fff;
+  padding: 1.25rem;
+}
+
+/* ===== NOTICE ===== */
+.notice {
+  max-width: 640px;
+  margin: 1rem auto;
+  padding: 0.85rem 1rem;
+  border: 2px solid #b42318;
+  background: #fdecec;
+  color: #7a1b14;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+ul.notice {
+  background-color: #d9edf7;
+  color: #c00f0f;
+  font-weight: bold;
+  font-style: italic;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+.notice li {
+  margin: 0.25rem 0;
+}
+
+#tools a {
+  text-decoration: none;
+  color: var(--dark-blue);
   font-weight: 600;
 }
 
@@ -111,7 +599,7 @@ body {
   box-shadow: 0 4px 8px var(--shadow);
 }
 
-/* BUTTON */
+/* ===== BUTTON ===== */
 .ui-button-primary {
   display: inline-block;
   padding: 0.6rem 1rem;
@@ -130,7 +618,6 @@ body {
   margin-top: 2rem;
 }
 
-/* Swap upgrades and reviews on desktop */
 @media (min-width: 768px) {
   .block-secondary {
     display: flex;
@@ -139,19 +626,15 @@ body {
 
   .block-upgrades {
     order: 1;
-    /* left */
     flex: 1;
-    /* optional: make both sides equal width */
   }
 
   .block-reviews {
     order: 2;
-    /* right */
     flex: 1;
   }
 }
 
-/* On mobile, stack naturally */
 @media (max-width: 767px) {
   .block-secondary {
     display: block;
@@ -202,10 +685,15 @@ body {
   flex: 1;
 }
 
-.vehicle-image img {
+.vehicle-image img,
+.detail-card img {
   width: 100%;
-  border-radius: 10px;
-  object-fit: cover;
+  max-width: 520px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  object-fit: contain;
+  border-radius: 8px;
   border: 1px solid #ddd;
 }
 
@@ -269,92 +757,14 @@ body {
   background: #222;
 }
 
+/* ===== DETAIL CARD ===== */
 .detail-card.vehicle-detail {
-  display: flex;
   flex-direction: row;
-  /* side by side on desktop */
   gap: 2rem;
-  margin: 2rem auto;
-  padding: 2rem;
-  max-width: 1100px;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.vehicle-image {
-  flex: 1;
-}
-
-.vehicle-image img {
-  width: 100%;
-  border-radius: 10px;
-  object-fit: cover;
-  border: 1px solid #ddd;
-}
-
-.vehicle-info {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-
-  @media (max-width: 767px) {
-      .detail-card.vehicle-detail {
-        flex-direction: column;
-        padding: 1rem;
-      }
-    }
-}
-
-/* ===== FOOTER ===== */
-footer {
-  text-align: center;
-  padding: 1rem;
-  background: var(--white);
-  margin-top: 2rem;
-  border-top: 1px solid var(--gray-light);
-}
-
-/* ===== TABLET & DESKTOP ===== */
-@media (min-width: 768px) {
-  .block-hero {
-    grid-template-columns: 2fr 1fr;
-    align-items: start;
-  }
-
-  .hero-info {
-    position: absolute;
-    top: 3rem;
-    left: 3rem;
-    max-width: 260px;
-  }
-
-  .block-secondary {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-/* ===== MOBILE ===== */
 @media (max-width: 767px) {
-  .block-hero {
-    grid-template-columns: 1fr;
-  }
-
-  .hero-info {
-    position: static;
-    margin-top: 1rem;
-  }
-
-  .upgrade-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .main-nav ul {
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .vehicle-detail {
+  .detail-card.vehicle-detail {
     flex-direction: column;
     padding: 1rem;
   }
@@ -368,6 +778,42 @@ footer {
   }
 }
 
+/* ===== PAGE TITLE CARD ===== */
+.page-title-card {
+  max-width: 1100px;
+  margin: 1.5rem auto;
+  padding: 1rem 1.25rem;
+  background: var(--white);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+  border: 3px solid var(--champagne);
+  border-radius: 10px;
+}
+
+.page-title-card h1 {
+  margin: 0;
+  font-size: 2rem;
+  color: var(--black);
+}
+
+/* ===== GENERAL DETAIL CARD ===== */
+.detail-card {
+  max-width: 1100px;
+  margin: 1rem auto;
+  padding: 1rem;
+  background: #fff;
+  border: 3px solid var(--champagne);
+  border-radius: 10px;
+}
+
+.detail-card img {
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+  display: block;
+  margin: 0 auto 1rem;
+}
+
+/* ===== INVENTORY GRID ===== */
 #inv-display {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -397,41 +843,177 @@ footer {
   font-weight: bold;
 }
 
-.page-title-card {
-  max-width: 1100px;
-  margin: 1.5rem auto;
-  padding: 1rem 1.25rem;
-  background: var(--white);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
-  border: 3px solid var(--champagne);
-  border-radius: 10px;
-}
-
-.page-title-card h1 {
-  margin: 0;
-  font-size: 2rem;
-  color: var(--black);
-}
-
-.detail-card {
-  max-width: 1100px;
-  margin: 1rem auto;
+/* ===== FOOTER ===== */
+footer {
+  text-align: center;
   padding: 1rem;
-  background: #fff;
-  border: 3px solid var(--champagne);
-  border-radius: 10px;
+  background: var(--white);
+  margin-top: 2rem;
+  border-top: 1px solid var(--gray-light);
 }
 
-.detail-card img {
-  width: 100%;
-  max-width: 700px;
-  height: auto;
-  display: block;
-  margin: 0 auto 1rem;
-}
-
+/* ===== TABLET & DESKTOP ===== */
 @media (min-width: 768px) {
+  .block-hero {
+    grid-template-columns: 2fr 1fr;
+    align-items: start;
+  }
+
+  .hero-info {
+    position: absolute;
+    top: 3rem;
+    left: 3rem;
+    max-width: 260px;
+  }
+
+  .block-secondary {
+    grid-template-columns: 1fr 1fr;
+  }
+
   .lower {
     margin-top: 4rem;
   }
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 767px) {
+  .block-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-info {
+    position: static;
+    margin-top: 1rem;
+  }
+
+  .upgrade-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .main-nav ul {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .vehicle-detail {
+    flex-direction: column;
+    padding: 1rem;
+  }
+}/* ===== Hover Animation for Classification Cards ===== */
+
+#inv-display li {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#inv-display li:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.15);
+}
+
+/* Smooth image zoom */
+#inv-display img {
+  transition: transform 0.4s ease;
+}
+
+#inv-display li:hover img {
+  transform: scale(1.05);
+}
+
+/* Smooth link color transition */
+.namePrice a {
+  transition: color 0.3s ease;
+}
+
+#inv-display li:hover .namePrice a {
+  color: #1c3faa;
+}
+
+/* ===============================
+   Premium Animation Enhancements
+================================= */
+
+/* Fade in cards on load */
+#inv-display li {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.6s ease forwards;
+}
+
+/* Stagger effect */
+#inv-display li:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+#inv-display li:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+#inv-display li:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+#inv-display li:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+#inv-display li:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Gradient glow on hover */
+#inv-display li:hover {
+  background: linear-gradient(145deg, #ffffff, #f5f8ff);
+  border: 1px solid rgba(28, 63, 170, 0.2);
+}
+
+/* Animated underline for vehicle title */
+.namePrice h2 a {
+  position: relative;
+}
+
+.namePrice h2 a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background: #1c3faa;
+  transition: width 0.3s ease;
+}
+
+#inv-display li:hover .namePrice h2 a::after {
+  width: 100%;
+}
+
+/* Slight shine effect */
+#inv-display li {
+  overflow: hidden;
+  position: relative;
+}
+
+#inv-display li::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent);
+  transform: skewX(-20deg);
+  transition: 0.6s;
+}
+
+#inv-display li:hover::before {
+  left: 130%;
 }

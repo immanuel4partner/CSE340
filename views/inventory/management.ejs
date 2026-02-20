@@ -1,0 +1,28 @@
+<div class="management-card">
+    <h1>Inventory Management</h1>
+
+    <!-- Flash Messages -->
+    <% if (messages && messages.length > 0) { %>
+    <div class="notice">
+        <% messages.forEach(function(message) { %>
+        <p><%= message %></p>
+        <% }) %>
+    </div>
+    <% } %>
+
+    <p class="management-lead">
+        Use the links below to manage classifications and inventory.
+    </p>
+
+    <div class="management-actions">
+        <a class="management-btn"
+           href="/inv/add-classification">
+            ➕ Add New Classification
+        </a>
+
+        <a class="management-btn"
+           href="/inv/add-inventory">
+            🚗 Add New Inventory Item
+        </a>
+    </div>
+</div>

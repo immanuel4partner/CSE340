@@ -1,13 +1,14 @@
 <% if (title) { %>
-<section class="page-title-card">
-    <h1>
-        <%= title %>
-    </h1>
+<section class="inventory-wrapper">
+    <h1 class="inventory-title"><%= title %></h1>
+
+    <% if (grid) { %>
+    <%- grid %>
+    <% } else { %>
+    <p class="notice">Sorry, no matching vehicles could be found.</p>
+    <% } %>
 </section>
+
 <% } else { %>
 <% res.redirect("/") %>
 <% } %>
-
-<%# messages() %>
-
-<%- grid %>

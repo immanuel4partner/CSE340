@@ -1,0 +1,107 @@
+<h1>Add Inventory Item</h1>
+
+<!-- Flash Messages -->
+<% if (messages && messages.length > 0) { %>
+<div class="notice">
+    <% messages.forEach(message => { %>
+    <p><%= message %></p>
+    <% }) %>
+</div>
+<% } %>
+
+<!-- Validation Errors -->
+<% if (errors) { %>
+<ul class="notice">
+    <% errors.array().forEach(error => { %>
+    <li><%= error.msg %></li>
+    <% }) %>
+</ul>
+<% } %>
+
+<form action="/inv/add-inventory"
+      method="post"
+      class="inventory-form">
+
+    <div class="inventory-inner">
+
+        <p class="form-note">ALL FIELDS ARE REQUIRED.</p>
+
+        <label for="classification_id">Classification</label>
+        <%- classificationList %>
+
+        <label for="inv_make">Make</label>
+        <input type="text"
+               name="inv_make"
+               id="inv_make"
+               required
+               placeholder="Min of 3 characters"
+               value="<%= inv_make || '' %>">
+
+        <label for="inv_model">Model</label>
+        <input type="text"
+               name="inv_model"
+               id="inv_model"
+               required
+               placeholder="Min of 3 characters"
+               value="<%= inv_model || '' %>">
+
+        <label for="inv_description">Description</label>
+        <textarea name="inv_description"
+                  id="inv_description"
+                  required><%= inv_description || '' %></textarea>
+
+        <label for="inv_image">Image Path</label>
+        <input type="text"
+               name="inv_image"
+               id="inv_image"
+               required
+               value="<%= inv_image || '/images/vehicles/no-image.png' %>">
+
+        <label for="inv_thumbnail">Thumbnail Path</label>
+        <input type="text"
+               name="inv_thumbnail"
+               id="inv_thumbnail"
+               required
+               value="<%= inv_thumbnail || '/images/vehicles/no-image-tn.png' %>">
+
+        <label for="inv_price">Price</label>
+        <input type="number"
+               name="inv_price"
+               id="inv_price"
+               required
+               step="0.01"
+               min="0"
+               placeholder="decimal or integer"
+               value="<%= inv_price || '' %>">
+
+        <label for="inv_year">Year</label>
+        <input type="number"
+               name="inv_year"
+               id="inv_year"
+               required
+               min="1900"
+               max="2099"
+               placeholder="4-digit year"
+               value="<%= inv_year || '' %>">
+
+        <label for="inv_miles">Miles</label>
+        <input type="number"
+               name="inv_miles"
+               id="inv_miles"
+               required
+               min="0"
+               placeholder="digits only"
+               value="<%= inv_miles || '' %>">
+
+        <label for="inv_color">Color</label>
+        <input type="text"
+               name="inv_color"
+               id="inv_color"
+               required
+               value="<%= inv_color || '' %>">
+
+        <button type="submit">Add Inventory Item</button>
+
+    </div>
+</form>
+
